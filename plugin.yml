@@ -1,0 +1,7 @@
+---
+name: Commands
+version: 0.0.1
+main: niko\Commands\Main
+api: 4.2.0
+src-namespace-prefix: niko\Commands
+...
