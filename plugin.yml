@@ -1,7 +1,26 @@
 ---
 name: Commands
-version: 0.0.1
+version: 1.0.2
 main: niko\Commands\Main
 api: 4.2.0
 src-namespace-prefix: niko\Commands
+author: fakol
+
+commands:
+  gm:
+    description: Change the game mode
+    permission: gm.usage
+  day:
+    description: Set the Day
+    permission: gm.day
+  night:
+    description: Set the Night
+    permission: gm.night
+permissions:
+  gm.usage:
+    default: op
+  gm.day:
+    default: op
+  gm.night:
+    default: op
 ...
