@@ -36,7 +36,6 @@ class Main extends PluginBase implements Listener{
 
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getLogger()->info("success enable");
     }
 
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool {
@@ -48,32 +47,32 @@ class Main extends PluginBase implements Listener{
         $player = $this->getServer()->getPlayerByPrefix($sender->getName());
         switch($cmd->getName()) {
             case "gm":
-				if (isset($args[0])) {
-					switch ($args[0]) {
-						case "0":
-							$player->setGamemode(GameMode::SURVIVAL());
-							$sender->sendMessage(TF::GREEN . $cfg->get("on-survival"));
-						break;
-						case "1":
-							$player->setGamemode(GameMode::CREATIVE());
-							$sender->sendMessage(TF::GREEN . $cfg->get("on-creative"));
-						break;
-						case "2":
-							$player->setGamemode(GameMode::ADVENTURE());
-							$sender->sendMessage(TF::GREEN . $cfg->get("on-adventure"));
-						break;
-						case "3":
-							$player->setGamemode(GameMode::SPECTATOR());
-							$sender->sendMessage(TF::GREEN . $cfg->get("on-spectator"));
-						break;
-						default:
-							$sender->sendMessage(TF::RED . $cfg->get("not-gm") . PHP_EOL . TF::WHITE . $cfg->get("usage"),"§c/gm <0, 1, 2, 3>§e.§r");
-						break;
-					}
-				} else {
-					$sender->sendMessage($cfg->get("usage"),"§c/gm <0, 1, 2, 3>§e.§r");
-				}
-			break;
+		if (isset($args[0])) {
+			switch ($args[0]) {
+				case "0":
+					$player->setGamemode(GameMode::SURVIVAL());
+					$sender->sendMessage(TF::GREEN . $cfg->get("on-survival"));
+					break;
+				case "1":
+					$player->setGamemode(GameMode::CREATIVE());
+					$sender->sendMessage(TF::GREEN . $cfg->get("on-creative"));
+					break;
+				case "2":
+					$player->setGamemode(GameMode::ADVENTURE());
+					$sender->sendMessage(TF::GREEN . $cfg->get("on-adventure"));
+					break;
+				case "3":
+					$player->setGamemode(GameMode::SPECTATOR());
+					$sender->sendMessage(TF::GREEN . $cfg->get("on-spectator"));
+					break;
+				default:
+					$sender->sendMessage(TF::RED . $cfg->get("not-gm") . PHP_EOL . TF::WHITE . $cfg->get("usage"),"§c/gm <0, 1, 2, 3>§e.§r");
+					break;
+			}
+		} else {
+			$sender->sendMessage($cfg->get("usage"),"§c/gm <0, 1, 2, 3>§e.§r");
+		}
+	    break;
             case "day":
                 if($sender->hasPermission("gm.day")) {
                     foreach($sender->getServer()->getWorldManager()->getWorlds() as $world){
